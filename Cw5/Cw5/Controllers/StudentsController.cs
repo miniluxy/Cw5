@@ -24,7 +24,7 @@ namespace Cw5.Controllers
         public IActionResult GetStudents()
         {
             List<Object> listQ = new List<Object>();
-            using (var client = new SqlConnection("Data Source=db-mssql;Initial Catalog=s18445; Integrated Security=True"))
+            using (var client = new SqlConnection("Data Source=db-mssql;Initial Catalog=s19263; Integrated Security=True"))
             using (var com = new SqlCommand())
 
             {
@@ -59,7 +59,7 @@ namespace Cw5.Controllers
         public IActionResult GetStudents(int id)
         {
             List<Object> listQ = new List<Object>();
-            using (var client = new SqlConnection("Data Source=db-mssql;Initial Catalog=s18445; Integrated Security=True"))
+            using (var client = new SqlConnection("Data Source=db-mssql;Initial Catalog=s19263; Integrated Security=True"))
             using (var com = new SqlCommand())
 
             {
