@@ -24,5 +24,6 @@ namespace Cw5.DTOs.Requests
 
         [Required]
         public string Studies { get; set; }
+        
     }
 }

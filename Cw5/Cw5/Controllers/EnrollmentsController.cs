@@ -28,27 +28,26 @@ namespace Cw5.Controllers
         public IActionResult EnrollStudent(EnrollStudentRequest request)
         {
             _service.EnrollStudent(request);
-            var response = new EnrollStudentResponse();
-            
-            if (_service.getMessage() == -1)
-                return BadRequest("Blad 400");
-            if (_service.getMessage() == -2)
-                return BadRequest("Blad 400");
-            if (_service.getMessage() == -3)
-                return BadRequest("Student's ID already exists");
-            if (_service.getMessage() == -4)
-                return BadRequest("Blad 400");
-            return Created(" ", _service.GetEnrollment());
+            var response = new EnrollStudentResponse();    
+            if (response == null)
+                return NotFound("Wrong data was passed");
+            else
+                //return Ok(response);
+                return StatusCode(201, response);
         }
-        /*
-        // POST: api/Enrollments
-        [HttpPost("enrollments")]
-        public void Post(string IndexNumber, string FirstName, string LastName, DateTime BirthDate, string Studies)
+
+        //..
+
+        //..
+        [HttpPost("{promotions}")]
+        public IActionResult PromoteStudents(PromoteStudentRequest request)
         {
-            dbService.AddStudnet(IndexNumber, FirstName, LastName, BirthDate, Studies);
-            return Created(" ", dbService.GetEnrollment());
+            PromoteStudentResponse response = _service.PromoteStudent(request);
+            if (response == null)
+                return StatusCode(400, BadRequest("Wrong data"));
+            else
+                return StatusCode(201, response);
         }
-        */
 
     }
 }

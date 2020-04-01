@@ -10,5 +10,7 @@ namespace Cw5.DTOs.Responses
         public string LastName { get; set; }
         public int Semester { get; set; }
         public DateTime StartDate { get; set; }
+        public int IdEnrollment { get; set; }
+        public String Studies { get; set; }
     }
 }
