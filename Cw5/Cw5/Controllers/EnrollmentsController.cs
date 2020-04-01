@@ -31,18 +31,24 @@ namespace Cw5.Controllers
             var response = new EnrollStudentResponse();
             
             if (_service.getMessage() == -1)
-                return BadRequest("Can't add");
+                return BadRequest("Blad 400");
             if (_service.getMessage() == -2)
-                return BadRequest("Studies not found");
+                return BadRequest("Blad 400");
             if (_service.getMessage() == -3)
                 return BadRequest("Student's ID already exists");
             if (_service.getMessage() == -4)
-                return BadRequest("Unknown error");
-            return Created("", _service.GetEnrollment());
+                return BadRequest("Blad 400");
+            return Created(" ", _service.GetEnrollment());
         }
-
-      
-
+        /*
+        // POST: api/Enrollments
+        [HttpPost("enrollments")]
+        public void Post(string IndexNumber, string FirstName, string LastName, DateTime BirthDate, string Studies)
+        {
+            dbService.AddStudnet(IndexNumber, FirstName, LastName, BirthDate, Studies);
+            return Created(" ", dbService.GetEnrollment());
+        }
+        */
 
     }
 }

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cw5.DTOs.Requests;
 using Cw5.Models;
+using Cw5.Services;
+
 
 namespace Cw5.Services
 {
@@ -15,7 +17,9 @@ namespace Cw5.Services
         {
 
         }
-
+        string SqlConnection = "Data Source=db-mssql;Initial Catalog=s19263;Integrated Security=True";
+        int message = -1;
+        int lastEr = -1;
         public void EnrollStudent(EnrollStudentRequest request)
         {
             //DTOs - Data Transfer Objects
@@ -49,9 +53,10 @@ namespace Cw5.Services
                     var dr = com.ExecuteReader();
                     if (!dr.Read())
                     {
+                        dr.Close();
                         tran.Rollback();
-                        //return BadRequest("Studia nie istnieja");
-                        //...
+                        message = -2;
+                        return;
                     }
                     int idstudies = (int)dr["IdStudies"];
 
